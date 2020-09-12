@@ -1,5 +1,31 @@
+<!--[![Build Status](https://travis-ci.org/wagnerjfr/guice-simple-example.svg?branch=travis-ci)](https://travis-ci.org/wagnerjfr/guice-simple-example)
+[![codecov](https://codecov.io/gh/wagnerjfr/guice-simple-example/branch/travis-ci/graph/badge.svg?token=D3IQCDGQHS)](https://codecov.io/gh/wagnerjfr/guice-simple-example)-->
+
 # guice-simple-example
 Simple example using [Guice](https://github.com/google/guice) for Dependency Injection.
+
+## Download
+Clone:
+```
+$ git clone https://github.com/wagnerjfr/guice-simple-example.git
+
+$ cd guice-simple-example
+```
+Build:
+```
+$ mvn clean package
+```
+Run:
+```
+$ java -jar target/guice_simple_example-1.0-SNAPSHOT.jar
+```
+Output:
+```
+set 12, 2020 5:31:44 PM repository.DatabaseModule configure
+INFO: Setting up MySQL of type REAL
+set 12, 2020 5:31:55 PM main.GuiceDemo run
+INFO: MySQL has 1000 transactions
+```
 
 ## Key points
 - pom.xml
