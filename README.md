@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/wagnerjfr/guice-simple-example.svg?branch=master)](https://travis-ci.org/wagnerjfr/guice-simple-example)
-[![codecov](https://codecov.io/gh/wagnerjfr/guice-simple-example/branch/travis-ci/graph/badge.svg?token=D3IQCDGQHS)](https://codecov.io/gh/wagnerjfr/guice-simple-example)
+[![codecov](https://codecov.io/gh/wagnerjfr/guice-simple-example/branch/master/graph/badge.svg?token=D3IQCDGQHS)](https://codecov.io/gh/wagnerjfr/guice-simple-example)
 
 # guice-simple-example
 Simple example using [Guice](https://github.com/google/guice) for Dependency Injection.
