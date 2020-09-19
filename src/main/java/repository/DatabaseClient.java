@@ -1,8 +1,8 @@
 package repository;
 
 import com.google.inject.Inject;
+import domain.Offer;
 import domain.Pair;
-import domain.Transaction;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,15 +16,15 @@ public class DatabaseClient {
         this.database = database;
     }
 
-    public void addTransaction(Pair pair, Transaction transaction) {
-        database.add(pair, transaction);
+    public void addOffer(Pair pair, Offer offer) {
+        database.add(pair, offer);
     }
 
-    public List<Transaction> getListAllTransactions(Pair pair) {
-        return database.getAllTransactions(pair);
+    public List<Offer> getListAllOffers(Pair pair) {
+        return database.getAllOffers(pair);
     }
 
-    public Optional<Transaction> getTransactionById(String tid) {
-        return database.getTransaction(tid);
+    public Optional<Offer> getOfferById(String tid) {
+        return database.getOffer(tid);
     }
 }
