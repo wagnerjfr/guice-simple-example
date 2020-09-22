@@ -1,9 +1,10 @@
 package repository;
 
+import domain.Offer;
 import domain.Pair;
-import domain.Transaction;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Optional;
@@ -12,37 +13,38 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 class FakeMySQL implements Database {
 
-    private EnumMap<Pair, List<Transaction>> data = new EnumMap<>(Pair.class);
+    private EnumMap<Pair, List<Offer>> data = new EnumMap<>(Pair.class);
 
     private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
     private final Lock read = rwl.readLock();
     private final Lock write = rwl.writeLock();
 
     @Override
-    public void add(Pair pair, Transaction transaction) {
+    public void add(Pair pair, Offer offer) {
         write.lock();
         try {
             if (!data.containsKey(pair)) {
                 data.put(pair, new ArrayList<>());
             }
-            data.get(pair).add(transaction);
+            data.get(pair).add(offer);
         } finally {
             write.unlock();
         }
     }
 
     @Override
-    public List<Transaction> getAllTransactions(Pair pair) {
+    public List<Offer> getAllOffers(Pair pair) {
         read.lock();
         try {
-            return new ArrayList<>(data.get(pair));
+            List<Offer> list = data.get(pair);
+            return list != null ? new ArrayList<>(list) : Collections.emptyList();
         } finally {
             read.unlock();
         }
     }
 
     @Override
-    public Optional<Transaction> getTransaction(String tid) {
+    public Optional<Offer> getOffer(String tid) {
         read.lock();
         try {
             return data.values().stream()

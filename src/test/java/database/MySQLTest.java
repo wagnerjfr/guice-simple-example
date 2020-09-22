@@ -2,8 +2,8 @@ package database;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import domain.Offer;
 import domain.Pair;
-import domain.Transaction;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -35,20 +35,20 @@ class MySQLTest {
     @Order(1)
     void addTransactionTest() {
         Pair pair = Pair.BTC_USD;
-        Transaction t1 = new Transaction(TID, "12334", BigDecimal.TEN, BigDecimal.ONE, 0);
-        client.addTransaction(pair, t1);
+        Offer t1 = new Offer(TID, "12334", 10, BigDecimal.ONE, Offer.Type.BUY);
+        client.addOffer(pair, t1);
 
-        assertEquals(1, client.getListAllTransactions(pair).size());
+        assertEquals(1, client.getListAllOffers(pair).size());
     }
 
     @Test
     @Order(2)
     void getTransactionByIdTest() {
-        Optional<Transaction> optionalTransaction = client.getTransactionById(TID);
+        Optional<Offer> optionalTransaction = client.getOfferById(TID);
         if (optionalTransaction.isPresent()) {
             assertEquals(TID, optionalTransaction.get().getTid());
         } else {
-            fail("Transaction is expected to exist.");
+            fail("Offer is expected to exist.");
         }
     }
 }

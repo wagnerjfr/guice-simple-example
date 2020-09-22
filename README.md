@@ -21,10 +21,20 @@ $ java -jar target/guice_simple_example-1.0-SNAPSHOT.jar
 ```
 Output:
 ```
-set 12, 2020 5:31:44 PM repository.DatabaseModule configure
+set 19, 2020 1:30:57 PM repository.DatabaseModule configure
 INFO: Setting up MySQL of type REAL
-set 12, 2020 5:31:55 PM main.GuiceDemo run
-INFO: MySQL has 1000 transactions
+set 19, 2020 1:30:59 PM application.GuiceDemo sampleExecution
+INFO: MySQL has 100 offers
+set 19, 2020 1:30:59 PM application.GuiceDemo sampleExecution
+INFO: Offer(tid=1, date=2020-09-19T13:30:57.991, amount=56, price=1044, type=SELL)
+set 19, 2020 1:30:59 PM application.GuiceDemo sampleExecution
+INFO: Offer(tid=2, date=2020-09-19T13:30:58.010, amount=99, price=1228, type=SELL)
+set 19, 2020 1:30:59 PM application.GuiceDemo sampleExecution
+INFO: Offer(tid=3, date=2020-09-19T13:30:58.010, amount=136, price=1132, type=BUY)
+set 19, 2020 1:30:59 PM application.GuiceDemo sampleExecution
+INFO: Offer(tid=4, date=2020-09-19T13:30:58.010, amount=187, price=1195, type=BUY)
+set 19, 2020 1:30:59 PM application.GuiceDemo sampleExecution
+INFO: Offer(tid=5, date=2020-09-19T13:30:58.010, amount=158, price=1060, type=SELL)
 ```
 
 ## Key points
@@ -43,7 +53,7 @@ INFO: MySQL has 1000 transactions
 ```java
 public interface Database {
 
-    void add(Pair pair, Transaction transaction);
+    void add(Pair pair, Transaction offer);
 
     List<Transaction> getAllTransactions(Pair pair);
 

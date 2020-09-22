@@ -1,16 +1,16 @@
 package repository;
 
+import domain.Offer;
 import domain.Pair;
-import domain.Transaction;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface Database {
 
-    void add(Pair pair, Transaction transaction);
+    void add(Pair pair, Offer offer);
 
-    List<Transaction> getAllTransactions(Pair pair);
+    List<Offer> getAllOffers(Pair pair);
 
-    Optional<Transaction> getTransaction(String tid);
+    Optional<Offer> getOffer(String tid);
 }
