@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/wagnerjfr/guice-simple-example.svg?branch=master)](https://travis-ci.org/wagnerjfr/guice-simple-example)
+[![Build Status](https://travis-ci.com/wagnerjfr/guice-simple-example.svg?branch=master)](https://travis-ci.com/wagnerjfr/guice-simple-example)
 [![codecov](https://codecov.io/gh/wagnerjfr/guice-simple-example/branch/master/graph/badge.svg)](https://codecov.io/gh/wagnerjfr/guice-simple-example)
 
 # guice-simple-example
