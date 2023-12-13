@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class DatabaseClient {
 
-    private Database database;
+    private final Database database;
 
     @Inject
     public DatabaseClient(Database database) {

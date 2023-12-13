@@ -10,8 +10,8 @@
 
     <properties>
         <junit-version>5.7.1</junit-version>
-        <lombok-version>1.18.20</lombok-version>
-        <guice-version>5.0.1</guice-version>
+        <lombok-version>1.18.30</lombok-version>
+        <guice-version>7.0.0</guice-version>
     </properties>
 
     <build>

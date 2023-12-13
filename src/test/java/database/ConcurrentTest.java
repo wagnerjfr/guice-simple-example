@@ -5,6 +5,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import domain.Offer;
 import domain.Pair;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -35,24 +36,23 @@ class ConcurrentTest {
     @Test
     @Order(1)
     void parallelOffersTest() throws InterruptedException {
-        final int numWritters = 4;
+        final int numWriters = 4;
 
-        for (int i = 0; i < numWritters; i++) {
-            new Thread(new Writter(client, Pair.BTC_USD)).start();
+        for (int i = 0; i < numWriters; i++) {
+            new Thread(new Writer(client, Pair.BTC_USD)).start();
         }
 
-        for (int i = 0; i < numWritters; i++) {
-            new Thread(new Writter(client, Pair.XRP_USD)).start();
+        for (int i = 0; i < numWriters; i++) {
+            new Thread(new Writer(client, Pair.XRP_USD)).start();
         }
 
-        Thread.sleep(Duration.ofSeconds(2).toMillis());
+        Thread.sleep(Duration.ofSeconds(1).toMillis());
 
-        final int total = ITERATIONS * numWritters;
-        assertTrue(total == client.getListAllOffers(Pair.BTC_USD).size());
-        assertTrue(total == client.getListAllOffers(Pair.XRP_USD).size());
+        final int total = ITERATIONS * numWriters;
+        Assertions.assertEquals(total, client.getListAllOffers(Pair.BTC_USD).size());
+        Assertions.assertEquals(total, client.getListAllOffers(Pair.XRP_USD).size());
 
-        Pair pair = Pair.BTC_USD;
-        Optional<Offer> optionalOffer = client.getOfferById("1");
+        Optional<Offer> optionalOffer = client.getListAllOffers(Pair.BTC_USD).stream().findFirst();
         if (optionalOffer.isPresent()) {
             Offer offer = optionalOffer.get();
             assertTrue(Integer.parseInt(offer.getTid()) > 0);
@@ -66,8 +66,7 @@ class ConcurrentTest {
     private void assertEquals(List<Offer> listAllOffers) {
     }
 
-    private abstract class Worker implements Runnable {
-
+    private abstract static class Worker implements Runnable {
         DatabaseClient client;
         Pair pair;
 
@@ -77,9 +76,9 @@ class ConcurrentTest {
         }
     }
 
-    private class Writter extends Worker {
+    private static class Writer extends Worker {
 
-        Writter(DatabaseClient client, Pair pair) {
+        Writer(DatabaseClient client, Pair pair) {
             super(client, pair);
         }
 

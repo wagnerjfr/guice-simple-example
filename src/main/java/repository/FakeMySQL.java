@@ -13,9 +13,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 class FakeMySQL implements Database {
 
-    private EnumMap<Pair, List<Offer>> data = new EnumMap<>(Pair.class);
+    private final EnumMap<Pair, List<Offer>> data = new EnumMap<>(Pair.class);
 
-    private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+    private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
     private final Lock read = rwl.readLock();
     private final Lock write = rwl.writeLock();
 

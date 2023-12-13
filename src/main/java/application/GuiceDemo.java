@@ -19,7 +19,7 @@ public class GuiceDemo {
 
     private final int numberOfOffers = 100;
     private final Pair pair = Pair.BTC_USD;
-    private DatabaseClient client;
+    private final DatabaseClient client;
 
     public GuiceDemo() {
         Injector injector = Guice.createInjector(new DatabaseModule(REAL));
