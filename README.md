@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.com/wagnerjfr/guice-simple-example.svg?branch=master)](https://travis-ci.com/wagnerjfr/guice-simple-example)
 [![codecov](https://codecov.io/gh/wagnerjfr/guice-simple-example/branch/master/graph/badge.svg)](https://codecov.io/gh/wagnerjfr/guice-simple-example)
 
 # Simplifying Java Development Through Dependency Injection
