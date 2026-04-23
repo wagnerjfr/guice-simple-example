@@ -17,14 +17,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class UtilTest {
 
     @Test
-    void transactionsGeneratorTest() {
+    void offersGeneratorTest() {
         final int number = 100;
         List<Offer> list = Util.getOfferList(number);
         assertEquals(number, list.size());
     }
 
     @Test
-    void transactionsGeneratorExceptionTest() {
+    void offersGeneratorExceptionTest() {
         for (int number : Arrays.asList(0, -1)) {
             assertThrows(NumberTransactionException.class, () -> Util.getOfferList(number));
         }

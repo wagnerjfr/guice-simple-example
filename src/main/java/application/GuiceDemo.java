@@ -32,7 +32,7 @@ public class GuiceDemo {
 
     public void sampleExecution() {
         Util.getOfferList(numberOfOffers)
-            .forEach(transaction -> client.addOffer(pair, transaction));
+            .forEach(offer -> client.addOffer(pair, offer));
 
         List<Offer> offers = client.getListAllOffers(pair);
         log.info(String.format("MySQL has %d offers", offers.size()));

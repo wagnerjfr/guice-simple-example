@@ -15,9 +15,9 @@ class MySQL implements Database, Sleepable {
 
     private static final int SLEEP_MILLI_SECONDS = 10;
 
-    private EnumMap<Pair, List<Offer>> data = new EnumMap<>(Pair.class);
+    private final EnumMap<Pair, List<Offer>> data = new EnumMap<>(Pair.class);
 
-    private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+    private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
     private final Lock read = rwl.readLock();
     private final Lock write = rwl.writeLock();
 
@@ -53,8 +53,8 @@ class MySQL implements Database, Sleepable {
         try {
             sleep(SLEEP_MILLI_SECONDS);
             return data.values().stream()
-                .flatMap(List::stream)
-                .filter(transaction -> transaction.getTid().equals(tid))
+                .flatMap(offers -> offers.stream())
+                .filter(offer -> offer.getTid().equals(tid))
                 .findFirst();
         } finally {
             read.unlock();

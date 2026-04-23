@@ -48,8 +48,8 @@ class FakeMySQL implements Database {
         read.lock();
         try {
             return data.values().stream()
-                .flatMap(List::stream)
-                .filter(transaction -> transaction.getTid().equals(tid))
+                .flatMap(offers -> offers.stream())
+                .filter(offer -> offer.getTid().equals(tid))
                 .findFirst();
         } finally {
             read.unlock();

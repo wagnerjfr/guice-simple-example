@@ -8,7 +8,7 @@ interface Sleepable {
         try {
             Thread.sleep(Duration.ofMillis(milliseconds).toMillis());
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 }

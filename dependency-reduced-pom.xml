@@ -8,19 +8,18 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.13.0</version>
         <configuration>
-          <source>8</source>
-          <target>8</target>
+          <release>${maven.compiler.release}</release>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.0</version>
+        <version>3.2.5</version>
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
+        <version>3.5.3</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -55,6 +54,9 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -62,13 +64,9 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.7.1</version>
+      <version>5.10.2</version>
       <scope>test</scope>
       <exclusions>
-        <exclusion>
-          <artifactId>apiguardian-api</artifactId>
-          <groupId>org.apiguardian</groupId>
-        </exclusion>
         <exclusion>
           <artifactId>opentest4j</artifactId>
           <groupId>org.opentest4j</groupId>
@@ -77,12 +75,16 @@
           <artifactId>junit-platform-commons</artifactId>
           <groupId>org.junit.platform</groupId>
         </exclusion>
+        <exclusion>
+          <artifactId>apiguardian-api</artifactId>
+          <groupId>org.apiguardian</groupId>
+        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.7.1</version>
+      <version>5.10.2</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -97,8 +99,9 @@
     </dependency>
   </dependencies>
   <properties>
-    <lombok-version>1.18.30</lombok-version>
-    <junit-version>5.7.1</junit-version>
+    <maven.compiler.release>17</maven.compiler.release>
+    <lombok-version>1.18.32</lombok-version>
+    <junit-version>5.10.2</junit-version>
     <guice-version>7.0.0</guice-version>
   </properties>
 </project>
